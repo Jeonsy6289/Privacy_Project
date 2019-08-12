@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using System.Windows.Forms;
+
 
 namespace PrivacyFinder
 {
@@ -20,9 +23,26 @@ namespace PrivacyFinder
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string selectfolder = "";
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public string ReadFile(string path) // 파일 읽고 텍스트를 추출하는 함수
+        {
+            return File.ReadAllText(path);
+        }
+
+        private void Open(object sender, RoutedEventArgs e)  // "폴더 열기" 버튼 이벤트
+        {
+            FolderBrowserDialog folderopen = new FolderBrowserDialog();
+            folderopen.Description = "검색할 폴더";
+            folderopen.ShowDialog();
+
+            // 선택한 폴더의 경로
+            selectfolder = folderopen.SelectedPath;
         }
     }
 }

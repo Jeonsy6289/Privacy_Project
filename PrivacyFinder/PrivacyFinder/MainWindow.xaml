@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrivacyFinder"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="개인정보검색기 ver 1.0" Height="450" Width="800">
+    <Grid Background="#FF97E4C8">
+        <Button x:Name="OpenBtn" Content="폴더 열기" HorizontalAlignment="Left" Margin="74,101,0,0" VerticalAlignment="Top" Width="100" FontFamily="MDEasop" FontSize="20" Click="Open"/>
+        <ListView x:Name="ListView" HorizontalAlignment="Left" Height="250" Margin="74,147,0,0" VerticalAlignment="Top" Width="250" FontFamily="MDEasop" FontSize="15">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox x:Name="TextBox" HorizontalAlignment="Left" Height="250" Margin="478,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" FontSize="15" FontFamily="MDGaesung"/>
+        <Button x:Name="SaveBtn" Content="파일 저장" HorizontalAlignment="Left" Margin="555,373,0,0" VerticalAlignment="Top" Width="100" FontFamily="MDEasop" FontSize="20"/>
+        <TextBox x:Name="NameBox" HorizontalAlignment="Left" Height="23" Margin="298,56,0,0" TextWrapping="Wrap" Text="개인정보" VerticalAlignment="Top" Width="120" FontSize="20" FontFamily="MDEasop"/>
+        <TextBlock HorizontalAlignment="Left" Margin="194,10,0,0" TextWrapping="Wrap" Text="개인정보검색기 ver 1.0" VerticalAlignment="Top" FontSize="40" FontFamily="MDEasop"/>
+        <Button Content="검색" HorizontalAlignment="Left" Margin="435,55,0,0" VerticalAlignment="Top" Width="75" FontSize="20" FontFamily="MDEasop"/>
+        <TextBox x:Name="PathBox" HorizontalAlignment="Left" Height="23" Margin="194,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="20" FontFamily="MDEasop" Background="{x:Null}"/>
+
     </Grid>
 </Window>
