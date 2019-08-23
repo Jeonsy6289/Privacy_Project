@@ -32,6 +32,8 @@ namespace PrivacyFinder
 
         string selected = "";
 
+        string filename = "";
+
         #endregion
 
         public MainWindow()
@@ -63,11 +65,12 @@ namespace PrivacyFinder
             {
                 if (System.IO.Path.GetExtension(file) == ".txt")
                 {
-                                        input = ReadFile(file);
+                    input = ReadFile(file);
                     int Privacy = Detectpattern(input, ref valuse);
                     if (Privacy > 0)
                     {
                         ListView.Items.Add(file);
+                        filename = filename + System.IO.Path.GetFileName(file) + "\n";
                     }
                 }
             }
@@ -106,17 +109,21 @@ namespace PrivacyFinder
             TextBox.Text = selected;
         }
 
-        //private void Save(object sender, RoutedEventArgs e)
-        //{
-        //    File.WriteAllLines(selectfolder, filename);
-        //}
+        private void Save(object sender, RoutedEventArgs e)
+        {
+            if (nameBox.Text == "저장할 파일 이름" || nameBox.Text == "")
+            {
+                System.Windows.Forms.MessageBox.Show("파일 이름을 다시 입력해주세요.", "알림창");
+            }
+            else if (File.Exists(selectfolder + "\\" + nameBox.Text + ".txt"))
+            {
+                System.Windows.Forms.MessageBox.Show("중복된 파일 이름입니다.", "알림창");
+            }
+            else
+            {
+                System.IO.File.WriteAllText(selectfolder + "\\" + nameBox.Text + ".txt", filename);
+                System.Windows.Forms.MessageBox.Show("파일이 저장되었습니다.", "알림창");
+            }
+        }
     }
 }
-
-
-
-
-/* 
- * 저장 버튼 만들기
- * 검색창 만들기
- */
